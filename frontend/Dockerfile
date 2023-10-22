@@ -1,6 +1,7 @@
 FROM node:18.18.2
 WORKDIR /angular-app
-RUN npm install @angular-devkit/build-angular && \
-    npm install -g @angular/cli
+COPY package.json package-lock.json ./
+RUN npm install
+RUN npm install -g @angular/cli
 EXPOSE 4200
 CMD ["ng", "serve", "--host", "0.0.0.0"]
